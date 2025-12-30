@@ -1,9 +1,11 @@
 const mongoose = require("mongoose");
 
 const productSchema = mongoose.Schema({
-    image: String,
+    image: Buffer,
     name: String,
-    price: Number,
+    price: {
+        type:mongoose.Types.Decimal128
+    },
     discount: {
         type: Number,
         default: 0

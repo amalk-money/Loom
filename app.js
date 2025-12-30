@@ -19,15 +19,29 @@ app.set(express.static(path.join(__dirname, "public")));
 const cookieParser = require("cookie-parser");
 app.use(cookieParser());
 
+//Flash
+const session = require('express-session');
+const flash = require('connect-flash');
+
+app.use(session({
+  secret: 'yourSecretKey',   // change to a strong secret
+  resave: false,
+  saveUninitialized: true
+}));
+
+app.use(flash());
+
 //Routes
 const ownersRouter = require("./routes/ownersRouter");
 app.use('/owners', ownersRouter);
-
 const usersRouter = require("./routes/usersRouter");
 app.use('/users', usersRouter);
-
 const productsRouter = require("./routes/productsRouter");
 app.use('/products', productsRouter);
+const index = require("./routes/index")
+app.use("/", index)
+
+require("dotenv").config();
 
 // App Listen
 app.listen(3000);
