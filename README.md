@@ -22,6 +22,3 @@ Loom is an ecommerce platform designed to provide a seamless shopping experience
 
 ---
 
-```bash
-git clone https://github.com/yourusername/loom.git
-cd loom
