@@ -54,4 +54,8 @@ router.get("/myaccount", isLoggenIn, async (req, res) => {
     res.render("myaccount", { user })
 })
 
+router.get("/test", (req, res) => {
+    res.render("test", { liked: false })
+})
+
 module.exports = router;

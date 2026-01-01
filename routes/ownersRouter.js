@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 
 const ownerModel = require("../models/owner-model")
+const productModel = require("../models/product-model")
 
 router.post("/create", async (req, res)=>{
     let owners = await ownerModel.find();
@@ -20,9 +21,14 @@ router.post("/create", async (req, res)=>{
 });
 
 
-router.get("/admin", (req, res)=>{
+router.get("/addproduct", (req, res)=>{
     let success = req.flash("success")
     res.render("createproduct", {success})
+})
+
+router.get("/allproduct", async (req, res)=>{
+    let products = await productModel.find()
+    res.render("allproduct", {products})
 })
 
 module.exports = router;
